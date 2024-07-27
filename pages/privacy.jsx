@@ -9,11 +9,11 @@ export default function Privacy() {
         <div className="py-3"></div>
         <p>⊳ You have to vote for the <a className="text-white" href="https://top.gg/bot/774043716797071371/vote">MusicMaker</a> bot when using certain commands from the bot commands.</p>
         <div className="py-3"></div>
-        <p>⊳ Every user can use the MusicMaker bot however they want, as long as they do not intend to harm.</p>
+        <p>⊳ Every user can use the Slayer Bot however they want, as long as they do not intend to harm.</p>
         <div className="py-3"></div>
-        <p>⊳ You cannot use certain commands at the same time while using MusicMaker.</p>   
+        <p>⊳ You cannot use certain commands at the same time while using Slayer Bot.</p>   
         <div className="py-3"></div>
-        <p>⊳ MusicMaker bot does not save any data based on users.</p>
+        <p>⊳ Slayer Bot bot does not save any data based on users.</p>
         <div className="py-3"></div>
         <p>⊳ While using the bot, your user ID is saved and deleted in the system for 60 seconds for once.</p> 
     
