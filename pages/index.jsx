@@ -57,7 +57,7 @@ Bota Oy Ver</a>
               <div>
                 <div className="text-white">
                   <p className="text-xl font-semibold mt-5"><i className={`fa fa-cogs text-2xl text-amber-500`} /> Kurulum</p>
-                  <p className="text-gray-500 line-clamp-4">Botu Davet Et Butonuna Tıklayıp Açılan Pençerede Sunucunuzu Seçip Yetkilendir Butonuna Tıklamanız Yeterli!</p>
+                  <p className="text-gray-500 line-clamp-4">Botu Davet Et Butonuna Tıklayıp Açılan Pencerede Sunucunuzu Seçip Yetkilendir Butonuna Tıklamanız Yeterli!</p>
                 </div>
               </div>
               <div>
