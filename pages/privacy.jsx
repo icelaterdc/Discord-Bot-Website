@@ -2,20 +2,21 @@ export default function Privacy() {
 
     return (
         <div>
-            <h1 className="font-semibold text-3xl text-white/75">Privacy Policy for MusicMaker</h1>
-            <p className="text-sm text-white/30 mb-4">Last Update: 20/05/2022  🆕️</p>
+            <h1 className="font-semibold text-3xl text-white/75">Gizlilik Politikası</h1>
+            <p className="text-sm text-white/30 mb-4">Son Güncelleme: 28/07/2024 🆕️</p>
   <div className="animateHeader text-white text-opacity-40 mt-5">
-        <p>⊳ To use the MusicMaker bot, you must define the necessary permissions when adding it to your discord server. <a className="text-white">(READ MESSAGES, SEND MESSAGES, EMBED LINKS, ATTACH FILES, READ MESSAGE HISTORY, CONNECT, SPEAK, USE VOICE ACTIVITY, PRIORITY SPEAKER)</a></p>
+        <p>⊳ Botun Sorunsuz Çalışabilmesi İçin Yönetici Yektisi Verip Entegraston Rolünü En Üste Taşımanız Gerekir. <a className="text-white">(Slayer Bot Geliştirici Ekibi olarak, kişisel verilerinizin gizliliğini ve güvenliğini korumak bizim için çok önemlidir. Bu nedenle, Discord sunucularımızı ziyaret ettiğinizde veya Slayer Bot'u kullandığınızda elde ettiğimiz kişisel verilerinizi nasıl topladığımızı, kullandığımızı ve paylaştığımızı açıklayan bu Gizlilik Politikasını hazırladık.
+Bu Gizlilik Politikası, geliştirici ekibimiz tarafından sunulan Slayer Discord botunu kullanan tüm kullanıcılar için geçerlidir.)</a></p>
         <div className="py-3"></div>
-        <p>⊳ You have to vote for the <a className="text-white" href="https://top.gg/bot/774043716797071371/vote">MusicMaker</a> bot when using certain commands from the bot commands.</p>
+        <p>⊳ Bot ile etkileşim kurarken saklanan verileriniz arasında mesaj içeriğiniz, durumunuz, kullanıcı adınız, ID numaranız, sunucucu ID numaranız, kanal adı ve ID numarası, hesap oluşturma tarihiniz, sunucu üye sayısı, bot eklenme tarihi ve sonradan eklenenilecek veriler yer alır.</p>
         <div className="py-3"></div>
-        <p>⊳ Every user can use the Slayer Bot however they want, as long as they do not intend to harm.</p>
+        <p>⊳ Verileriniz, Discord Geliştirici Politikası'na uygun olarak şifreli bir şekilde saklanmaktadır. Herhangi bir üçüncü taraf programın veya kullanıcının erişimine açık değildir.</p>
         <div className="py-3"></div>
-        <p>⊳ You cannot use certain commands at the same time while using Slayer Bot.</p>   
+        <p>⊳ Verileriniz botu geliştirmek, ticari pazarlama, yasal istekler ve bu gibi durumlar karşısında kullanılabilir.</p>   
         <div className="py-3"></div>
-        <p>⊳ Slayer Bot bot does not save any data based on users.</p>
+        <p>⊳ Verileriniz Discord Şartlarına göre 30 gün saklandıktan sonra otomatik olarak silinir.</p>
         <div className="py-3"></div>
-        <p>⊳ While using the bot, your user ID is saved and deleted in the system for 60 seconds for once.</p> 
+        <p>⊳ Veri Taplanımı Hakkında Daha Fazla Bilgi İçin Destek Ekibine Ulaşabilirsiniz.</p> 
     
         </div>
             </div>
