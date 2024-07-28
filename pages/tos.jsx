@@ -1,20 +1,20 @@
 export default function Tos() {
   return (
     <div>
-     <h2 className="mt-4 text-white font-bold text-3xl">Terms of Services</h2>
-      <p className="text-sm text-white/30 mb-1">Last Update: 20/05/2022 🆕️</p>
+     <h2 className="mt-4 text-white font-bold text-3xl">Kullanım Şartları</h2>
+      <p className="text-sm text-white/30 mb-1">Son Güncelleme: 28/07/2024 🆕️</p>
   <div className="animateHeader text-white text-opacity-40 mt-5">
-<p>⊳ Every discord server can use the MusicMaker bot for free, it is completely prohibited to sell or market for a fee.</p>
+<p>⊳ Slayer Bot tamamen ücretsiz sunulmaktadır, botu ücret karşılığı satmaya çalışmak kesinlikle yasaktır.</p>
 <div className="py-3"></div>
-<p>⊳ You cannot use bot commands to harm the bot.</p>
+<p>⊳ Botun herhangi bir hatasından faydalanmak yasaktır.</p>
 <div className="py-3"></div>
-<p>⊳ You may not use open source codes to harm other servers.</p>
+<p>⊳ Bota, botun geliştiricilerine veya kullanıcılarına hakaret etmek kesinlikle yasaktır.</p>
 <div className="py-3"></div>
-<p>⊳ You may not sell or market open source codes through other platforms.</p>
+<p>⊳ Botu kopyalamaya çalışmak kesinlikle yasaktır ve cezai sorumluluk taşır.</p>
 <div className="py-3"></div>
-<p>⊳ While using the bot, you cannot use it in a way that harms other users for troll purposes.</p>
+<p>⊳ Yukarıdaki maddeler için veritbanında log tutulmaktadır, tespi edilirse gerekli işlemler uygulanacaktır. Slayer Bot olduğu gibi sunulmaktadır, geliştiriciler botun işleyişinden veya kullanımından kaynaklanan herhangi bir sorumluluk kabul etmez.</p>
 <div className="py-3"></div>
-<p>⊳ To use certain discord bot commands, you need to vote for the <a className="text-white" href="https://top.gg/bot/774043716797071371/vote">MusicMaker</a> bot at certain intervals.</p>
+<p>⊳ Belirli Komutları Kullanmak İçin <a className="text-white" href="https://top.gg/bot/1201613667561639947">Slayer Bot'a</a> Oy Vermeniz Gerekir.</p>
 </div>
     </div>
   );
