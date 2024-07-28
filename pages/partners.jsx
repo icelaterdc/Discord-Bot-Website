@@ -23,7 +23,7 @@ export default function Partners() {
                                 <h1 className="leading-none text-3xl font-bold text-white">Oksit Web</h1>        
                                 <div className="flex items-center mt-1">
                                     <p className="font-normal font-sm">
-                                      Ucuz, Kalitleli ve Güvenilir Hostingin Adresi OksitWeb! Sunucularda Kesinti Olmaksızın 7/24 Hizmet Vermektedir.
+                                      Uygun Fiyatlı, Kaliteli ve Güvenilir Hostingin Adresi OksitWeb! Sunucularda Kesinti Olmaksızın Kullanıcılara 7/24 Kaliteli Hosting Hizmeti Vermektedir.
                                     </p>
                                 </div>     
                             </div>
