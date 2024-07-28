@@ -18,12 +18,12 @@ export default function Footer() {
                                 <div>
                                     <Menu.Button className="flex z-1 items-center w-full px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                                         <img
-                                            src={`https://flagcdn.com/w80/gb.png`}
+                                            src={`https://flagcdn.com/w80/tr.png`}
                                             width="24"
                                             height="18"
                                             className="mr-2 h-4 rounded-sm"
                                         />
-                                        English
+                                        Türkçe
                                         <ChevronDownIcon
                                             className="w-5 h-5 ml-2 -mr-1 transform rotate-180 text-violet-200 hover:text-violet-100"
                                             aria-hidden="true"
@@ -36,19 +36,19 @@ export default function Footer() {
                         <div className="col-span-1">
                             <p className="text-white font-medium mt-3 sm:mt-0 sm:mb-3">Links</p>
                             <div>
-                                <Link href="https://top.gg/bot/774043716797071371/vote">
+                                <Link href="https://top.gg/bot/1201613667561639947">
                                     <a className="text-white/50 hover:text-white hover:underline transform duration-200">
                                         Oy Ver
                                     </a>
                                 </Link>
                             </div>
                             <div>
-                                <a href="https://discord.gg/ZcDprCrFTn" target="_blank" className="text-white/50 hover:text-white hover:underline transform duration-200">
+                                <a href="https://discord.gg/jeT6cae5CF" target="_blank" className="text-white/50 hover:text-white hover:underline transform duration-200">
                                     Destek Sunucusu
                                 </a>
                             </div>
                             <div>
-                                <a href="https://discord.com/oauth2/authorize?client_id=1201613667561639947&scope=bot%20applications.commands&permissions=0" target="_blank" className="text-white/50 hover:text-white hover:underline transform duration-200">
+                                <a href="https://discord.com/oauth2/authorize?client_id=1201613667561639947&scope=bot%20applications.commands&permissions=8" target="_blank" className="text-white/50 hover:text-white hover:underline transform duration-200">
                                     Botu Davet etEt
                                 </a>
                             </div>
@@ -63,14 +63,14 @@ export default function Footer() {
                                 </Link>
                             </div>
                             <div>
-                                <Link href="https://github.com/umutxyp/MusicBot">
+                                <Link href="https://github.com/Mamecan211">
                                     <a className="text-white/50 hover:text-white hover:underline transform duration-200">
                                     <i className={`fa-brands fa-github`} /> GitHub 
                                     </a>
                                 </Link>
                             </div>
                             <div>
-                                <Link href="https://youtube.com/UmutBayraktarYT">
+                                <Link href="https://m.youtube.com/@icelater">
                                     <a className="text-white/50 hover:text-white hover:underline transform duration-200">
                                     <i className={`fa-brands fa-youtube`} /> YouTube 
                                     </a>
