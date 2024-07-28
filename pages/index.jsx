@@ -23,13 +23,13 @@ export default function Index() {
                   "flex items-center px-6 justify-center gap-x-2 shadow-lg shadow-amber-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white " 
                 }
               >
-          Botu Ekle
+          Sunucuna Ekle
               </a>
             </Link>
   <div className="py-10"></div>
   <Link href={"https://top.gg/bot/1201613667561639947"}>
   <a className={" px-6 justify-center gap-x-2 shadow-lg shadow-amber-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white " }>
-Bota Oy Ver</a>
+Top.gg Oy Ver</a>
   </Link>
         </div>
 
