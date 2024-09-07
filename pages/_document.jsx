@@ -1,7 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
-
   render() {
     return (
       <Html>
@@ -19,11 +18,7 @@ class MyDocument extends Document {
           <meta property="og:url" content="https://slayer-bot.vercel.app" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="Slayer Bot" />
-          <link
-            rel="icon"
-            href="/img/logo2.png"
-            type="image/x-icon"
-          />
+          <link rel="icon" href="/img/logo2.png" type="image/x-icon" />
           <meta
             property="og:description"
             content="Slayer Bot Moderasyon, Eğlence, Ekonomi, Sunucu Koruma, Müzik, Botlist, Çekiliş, Hatırlatıcı, Abone Sistemi, Log, Yapay Zeka ve Daha Fazla Özelliği Barındıran Bir Discord Botudur."
@@ -31,10 +26,7 @@ class MyDocument extends Document {
           <meta property="og:image" content="/img/logo.jpg" />
           <meta property="og:image:alt" content="Slayer Bot" />
           <meta property="og:locale" content="en_GB" />
-          <meta
-            property="og:site_name"
-            content="Slayer Bot"
-          />
+          <meta property="og:site_name" content="Slayer Bot" />
           <meta name="theme-color" content="#087ddd" />
           <link rel="icon" href="/img/logo.jpg" type="image/x-icon" />
           <link
@@ -46,6 +38,13 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="stylesheet" href="/css/nprogress.css" />
+          
+          {/* Google AdSense Kodu */}
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9788366285689194"
+            crossOrigin="anonymous"
+          ></script>
     
         </Head>
         <body>
