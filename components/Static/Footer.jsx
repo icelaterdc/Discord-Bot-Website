@@ -49,7 +49,7 @@ export default function Footer() {
                             </div>
                             <div>
                                 <a href="https://discord.com/oauth2/authorize?client_id=1201613667561639947&scope=bot%20applications.commands&permissions=8" target="_blank" className="text-white/50 hover:text-white hover:underline transform duration-200">
-                                    Botu Davet etEt
+                                    Botu Davet Et
                                 </a>
                             </div>
                         </div>
