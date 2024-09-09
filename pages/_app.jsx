@@ -44,14 +44,14 @@ export default function AwardApp({ Component, pageProps }) {
       name: "Botu Ekle",
       icon: "fal fa-robot",
       activeIcon: "fab fa-robot",
-      href: "https://discord.com/oauth2/authorize?client_id=1201613667561639947&scope=bot%20applications.commands&permissions=8",
+      href: "https://discord.com/oauth2/authorize?client_id=1201613667561639947&permissions=139455884671&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2Fc24GWCtxQc&integration_type=0&scope=email+guilds+identify+bot+guilds.join+openid",
     },
        {
       link: true,
       name: "Oy Ver",
       icon: "fa fa-plus",
       activeIcon: "fa fa-plus",
-      href: "https://top.gg/bot/1201613667561639947",
+      href: "https://top.gg/bot/1201613667561639947/vote",
     },
     {
       link: true,
