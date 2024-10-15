@@ -23,7 +23,7 @@ export default function Partners() {
                                 <h1 className="leading-none text-3xl font-bold text-white">Slayer Uptime</h1>        
                                 <div className="flex items-center mt-1">
                                     <p className="font-normal font-sm">
-                                      Slayer Uptime, Glitch vb projelerinizi sürekli izleyerek aktif kalmasını saglayan çok işlevli ve kolay kullanımlı bir Discord botudur.
+                                      Slayer Uptime, Glitch vb projelerinizi sürekli izleyerek aktif kalmasını sağlayan çok işlevli ve kolay kullanımlı bir Discord botudur.
                                     </p>
                                 </div>     
                             </div>
