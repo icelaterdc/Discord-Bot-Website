@@ -91,7 +91,7 @@ const commands = [
   
   <Link href={"https://discord.com/oauth2/authorize?client_id=1201613667561639947&permissions=139455884671&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2Fc24GWCtxQc&integration_type=0&scope=email+guilds+identify+bot+guilds.join+openid"}>
   <a className={"flex items-center px-6 justify-center gap-x-2 shadow-lg shadow-amber-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white " }>
-Botu Davet Et</a>
+Slayer Botu Ekle</a>
   </Link>
 
   <div className="py-10"></div>
@@ -105,7 +105,7 @@ Destek Sunucusu</a>
   
   <Link href={"https://top.gg/bot/1201613667561639947/vote"}>
   <a className={" px-6 justify-center gap-x-2 shadow-lg shadow-amber-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white " }>
-Bota Oy Ver</a>
+Slayer Botu Oyla</a>
   </Link>
 </div>
 
