@@ -46,7 +46,7 @@ export default function AwardApp({ Component, pageProps }) {
       activeIcon: "fab fa-robot",
       href: "https://discord.com/oauth2/authorize?client_id=1201613667561639947&permissions=139455884671&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2Fc24GWCtxQc&integration_type=0&scope=email+guilds+identify+bot+guilds.join+openid",
     },
-       {
+    {
       link: true,
       name: "Oy Ver",
       icon: "fa fa-plus",
@@ -59,8 +59,22 @@ export default function AwardApp({ Component, pageProps }) {
       icon: "fal fa-handshake",
       activeIcon: "fa fa-handshake",
       href: "/partners",
-    }
-  ]
+    },
+    {
+      link: true,
+      name: "API Dokümantasyonu",
+      icon: "fa fa-book",
+      activeIcon: "fa fa-book",
+      href: "/api",
+    },
+    {
+      link: true,
+      name: "Lisanslar",
+      icon: "fa fa-file-contract",
+      activeIcon: "fa fa-file-contract",
+      href: "/license",
+    },
+  ];
 
   return (
     <ThemeProvider defaultTheme='violet'>
