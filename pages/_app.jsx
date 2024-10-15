@@ -62,7 +62,7 @@ export default function AwardApp({ Component, pageProps }) {
     },
     {
       link: true,
-      name: "API Dokümasayonları",
+      name: "API Dokümasyonları",
       icon: "fa fa-book",
       activeIcon: "fa fa-book",
       href: "/api",
