@@ -24,11 +24,11 @@ export default function LicensePage() {
         <p className="text-md text-white">
           Slayer Bot'un sağladığı API'ler, geliştiricilerin botun özelliklerini kendi sistemleriyle entegre etmesine olanak tanır. Bu API'ler, çeşitli fonksiyonlar için kullanılabilir:
           <ul className="list-disc list-inside mt-3 text-white">
-            <li>Kullanıcı yönetimi ve kimlik doğrulama API'leri</li>
-            <li>Sunucu bilgisi ve kanal yönetimi API'leri</li>
-            <li>Moderasyon araçlarına erişim sağlayan API'ler</li>
-            <li>Otomasyon ve görev planlama API'leri</li>
-            <li>Veri analizi ve raporlama API'leri</li>
+            <li className="text-white">Kullanıcı yönetimi ve kimlik doğrulama API'leri</li>
+            <li className="text-white">Sunucu bilgisi ve kanal yönetimi API'leri</li>
+            <li className="text-white">Moderasyon araçlarına erişim sağlayan API'ler</li>
+            <li className="text-white">Otomasyon ve görev planlama API'leri</li>
+            <li className="text-white">Veri analizi ve raporlama API'leri</li>
           </ul>
         </p>
         <p className="text-md text-white">
@@ -39,11 +39,11 @@ export default function LicensePage() {
         <p className="text-md text-white">
           Slayer Bot’un arkasındaki kod altyapısı, uzun yılların deneyimiyle oluşturulmuş, optimize edilmiş ve güvenlik açısından titizlikle incelenmiş bir sistemdir. Bu altyapı, modüler yapıda tasarlanmıştır ve birçok bileşenden oluşur:
           <ul className="list-disc list-inside mt-3 text-white">
-            <li>Özelleştirilebilir komutlar ve eklentiler</li>
-            <li>Olay tabanlı tetikleyiciler ve otomatik işleyiciler</li>
-            <li>Güvenlik ve erişim kontrolleri için özel yazılımlar</li>
-            <li>Veritabanı yönetimi ve kayıt sistemi</li>
-            <li>Gerçek zamanlı veri işleme ve kullanıcı etkileşimleri</li>
+            <li className="text-white">Özelleştirilebilir komutlar ve eklentiler</li>
+            <li className="text-white">Olay tabanlı tetikleyiciler ve otomatik işleyiciler</li>
+            <li className="text-white">Güvenlik ve erişim kontrolleri için özel yazılımlar</li>
+            <li className="text-white">Veritabanı yönetimi ve kayıt sistemi</li>
+            <li className="text-white">Gerçek zamanlı veri işleme ve kullanıcı etkileşimleri</li>
           </ul>
         </p>
         <p className="text-md text-white">
@@ -54,11 +54,11 @@ export default function LicensePage() {
         <p className="text-md text-white">
           Slayer Bot’u kullanırken, aşağıdaki şartlar geçerlidir:
           <ul className="list-disc list-inside mt-3 text-white">
-            <li>Slayer Bot'un tüm özellikleri ticari ve kişisel kullanım için uygun şekilde lisanslanmıştır.</li>
-            <li>Kodların değiştirilmesi veya izinsiz yeniden dağıtılması yasaktır.</li>
-            <li>API'lerin ticari amaçla kullanılması, Hydra Development Collective'in açık iznine tabidir.</li>
-            <li>Kullanıcı verileri, Dream Software Inc. tarafından koruma altındadır ve gizlilik politikalarına uygun olarak işlenir.</li>
-            <li>Herhangi bir ihlal durumunda, lisans sahipleri yasal işlem başlatma hakkına sahiptir.</li>
+            <li className="text-white">Slayer Bot'un tüm özellikleri ticari ve kişisel kullanım için uygun şekilde lisanslanmıştır.</li>
+            <li className="text-white">Kodların değiştirilmesi veya izinsiz yeniden dağıtılması yasaktır.</li>
+            <li className="text-white">API'lerin ticari amaçla kullanılması, Hydra Development Collective'in açık iznine tabidir.</li>
+            <li className="text-white">Kullanıcı verileri, Dream Software Inc. tarafından koruma altındadır ve gizlilik politikalarına uygun olarak işlenir.</li>
+            <li className="text-white">Herhangi bir ihlal durumunda, lisans sahipleri yasal işlem başlatma hakkına sahiptir.</li>
           </ul>
         </p>
 
