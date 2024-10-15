@@ -16,14 +16,14 @@ export default function Partners() {
             <div className="lg:max-w-screen-lg mt-10 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <div className="flex flex-col justify-center text-white rounded">
-            <a href="https://oksitweb.com">
+            <a href="https://discord.gg/UN2wF7mBVq">
                         <div className="flex-1 gap-x-4 flex items-center bg-gradient-to-b from-neutral-900/80 to-neutral-900/20 p-3 rounded-full">
-                            <img className="rounded-full h-32 w-32" src="https://media.discordapp.net/attachments/1262067722502672384/1267152930788741140/IMG_20240728_191246_001.jpg?ex=66a7bfa1&is=66a66e21&hm=e699724aed0462d0341463c57798dda3e53a5521641aec4777fc090e6013e4d1&.png" />
+                            <img className="rounded-full h-32 w-32" src="https://media.discordapp.net/attachments/1295796909629247530/1295796947717984388/InShot_20241015_201215740-Photoroom.png?ex=670ff473&is=670ea2f3&hm=83338f2794bb54fe575905c013e899793f18a2e74c0baa3fdaadccbb50165e13&" />
                             <div>
-                                <h1 className="leading-none text-3xl font-bold text-white">Oksit Web</h1>        
+                                <h1 className="leading-none text-3xl font-bold text-white">Slayer Uptime</h1>        
                                 <div className="flex items-center mt-1">
                                     <p className="font-normal font-sm">
-                                      Uygun Fiyatlı, Kaliteli ve Güvenilir Hostingin Adresi OksitWeb! Sunucularda Kesinti Olmaksızın Kullanıcılara 7/24 Kaliteli Hosting Hizmeti Vermektedir.
+                                      Slayer Uptime, Glitch vb projelerinizi sürekli izleyerek aktif kalmasını saglayan çok işlevli ve kolay kullanımlı bir Discord botudur.
                                     </p>
                                 </div>     
                             </div>
