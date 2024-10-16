@@ -1,36 +1,20 @@
+import Link from 'next/link';
+
 export default function ApiPage() {
   return (
-    <>
-      <div className="w-full my-10">
-        <div className="flex w-full justify-center">
-          <img width="400" src="/img/api-header.png" alt="API Header" />
-        </div>
-        <h1 className="py-7 animateHeader text-4xl font-extrabold text-center text-white">
-          <i className="fal fa-code text-blue-400 mr-2" />
-          API Endpoints
-        </h1>
-      </div>
-
-      <div className="lg:max-w-screen-lg mt-10 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="flex flex-col justify-center text-white rounded">
-          <a href="https://slayerbot.vercel.app/api/sohbet/dosc">
-            <div className="flex-1 gap-x-4 flex items-center bg-gradient-to-b from-neutral-900/80 to-neutral-900/20 p-3 rounded-full">
-              <img className="rounded-full h-32 w-32" src="/img/chat-api-icon.png" alt="Chat API Icon" />
-              <div>
-                <h1 className="leading-none text-3xl font-bold text-white">Sohbet API</h1>        
-                <div className="flex items-center mt-1">
-                  <p className="font-normal font-sm">
-                    Gelişmiş sohbet özellikleri için API endpointi. Bot ile etkileşim kurmak için kullanılır.
-                  </p>
-                </div>     
-              </div>
-            </div>
-          </a>
+    <div className="min-h-screen bg-black flex flex-col items-center justify-center">
+      <h1 className="text-white text-4xl mb-10">ENDPOINTS</h1>
+      <div className="bg-black grid grid-cols-1 gap-4 w-full max-w-lg">
+        <div className="bg-white bg-opacity-60 p-5 rounded-lg text-center">
+          <h2 className="text-xl font-bold text-white mb-2">Sohbet API</h2>
+          <p className="text-gray-300 mb-4">
+            Sohbet için AI tabanlı bir API sağlar.
+          </p>
+          <Link href="https://slayerbot.vercel.app/api/sohbet/dosc">
+            <a className="bg-blue-500 text-white py-2 px-4 rounded">Link</a>
+          </Link>
         </div>
       </div>
-
-      {/* className hatası buradaydı, düzeltildi */}
-      <div className="py-10"></div>
-    </>
+    </div>
   );
 }
