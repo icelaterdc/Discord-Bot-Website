@@ -56,7 +56,7 @@ export default function Footer() {
                         <div className="col-span-1">
                             <p className="text-white font-medium mt-3 sm:mt-0 sm:mb-3">Sosyal</p>
                             <div>
-                                <Link href="https://discord.gg/MfYJqanN8M">
+                                <Link href="https://discord.com/users/991062695803510864">
                                     <a className="text-white/50 hover:text-white hover:underline transform duration-200">
                                     <i className={`fa-brands fa-discord`} /> Disocrd 
                                     </a>
