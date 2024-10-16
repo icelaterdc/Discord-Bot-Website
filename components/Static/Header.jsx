@@ -46,8 +46,8 @@ const Header = ({ $, NavItems }) => {
     const [isDisabled, setIsDisabled] = useState(true);
 
     const colorsThemes = [
-        { id: 'violet', color: 'violet', label: 'Violet' },
         { id: 'blue', color: 'blue', label: 'Sky' },
+        { id: 'violet', color: 'violet', label: 'Violet' },
         { id: 'emerald', color: 'emerald', label: 'Emerald' },
         { id: 'rose', color: 'rose', label: 'Rose' },
         { id: 'amber', color: 'amber', label: 'Amber' },
@@ -65,12 +65,16 @@ const Header = ({ $, NavItems }) => {
         if (typeof localStorage == "undefined") return;
         const banner = localStorage.getItem("$Award_close_banner");
         if (!banner) setBanner(true);
-        const theme = localStorage.getItem("theme");
-        if (theme === "violet") setHue("hue-rotate-[230deg]");
-        if (theme === "blue") setHue("hue-rotate-[180deg]");
-        if (theme === "emerald") setHue("hue-rotate-[70deg]");
-        if (theme === "rose") setHue("hue-rotate-[330deg]");
-        if (theme === "amber") setHue("");
+        const storedTheme = localStorage.getItem("theme");
+        if (!storedTheme) {
+            setTheme("blue");
+            localStorage.setItem("theme", "blue");
+        }
+        if (storedTheme === "violet") setHue("hue-rotate-[230deg]");
+        if (storedTheme === "blue") setHue("hue-rotate-[180deg]");
+        if (storedTheme === "emerald") setHue("hue-rotate-[70deg]");
+        if (storedTheme === "rose") setHue("hue-rotate-[330deg]");
+        if (storedTheme === "amber") setHue("");
     }, []);
 
     useEffect(() => {
