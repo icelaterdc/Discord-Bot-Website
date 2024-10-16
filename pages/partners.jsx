@@ -11,15 +11,13 @@ export default function Partners() {
                 </h1>
             </div>
 
-            <div className="lg:max-w-screen-lg mt-10 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-0">
+            <div className="lg:max-w-screen-lg mt-10 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col justify-center text-white">
                     <a href="https://discord.gg/UN2wF7mBVq">
                         <div className="flex flex-col bg-gradient-to-b from-neutral-900/80 to-neutral-900/20 p-6 rounded-lg">
                             <div className="flex items-center gap-4 mb-4">
                                 <img className="rounded-full h-32 w-32 flex-shrink-0" src="/img/slayer-uptime.png" alt="Slayer Uptime" />
-                                <div className="pr-3"> {/* Sağ tarafa ekstra padding */}
-                                    <h1 className="text-3xl font-bold text-white">Slayer Uptime</h1>
-                                </div>
+                                <h1 className="text-3xl font-bold text-white">Slayer Uptime</h1>
                             </div>
                             <div className="mt-2">
                                 <p className="font-normal">
