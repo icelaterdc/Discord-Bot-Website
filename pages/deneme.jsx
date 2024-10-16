@@ -27,9 +27,9 @@ export default function ApiPage() {
             </div>
           </a>
         </div>
-
-        {/* Buraya daha fazla API endpoint ekleyebilirsiniz */}
       </div>
+
+      {/* className hatası buradaydı, düzeltildi */}
       <div className="py-10"></div>
     </>
   );
