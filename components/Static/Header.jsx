@@ -10,7 +10,6 @@ const MobileNavbar = ({ open, setOpen, NavItems }) => {
         <div onClick={() => setOpen(false)} className={`${open ? '' : 'hidden'} w-full h-full z-50 fixed overflow-none top-0 backdrop-blur-sm lg:hidden`} />
         <div className={`transform ${open ? '' : 'translate-x-full'} transition-all duration-300 bg-black bg-opacity-90 text-white w-80 fixed rounded-l-xl z-60 right-0 top-0 h-full lg:translate-x-full`}>
             <div className="relative w-full h-full">
-
                 <div className="flex justify-between border-b border-white/20 items-center px-5 py-4">
                     <div className="flex items-center">
                         <img width="32" className="rounded-full icon-glow" src="/img/logo.jpg" />
@@ -36,12 +35,15 @@ const MobileNavbar = ({ open, setOpen, NavItems }) => {
         </div>
     </>
 }
+
 const Header = ({ $, NavItems }) => {
     const [open, setOpen] = useState(false);
     const [colors, setColors] = useState(false);
     const [isDiscovered, setIsDiscovered] = useState(false);
     const router = useRouter();
     const { theme, setTheme } = useTheme();
+    const [countdown, setCountdown] = useState(7);
+    const [isDisabled, setIsDisabled] = useState(true);
 
     const colorsThemes = [
         { id: 'violet', color: 'violet', label: 'Violet' },
@@ -58,6 +60,7 @@ const Header = ({ $, NavItems }) => {
     
     const [hue, setHue] = useState("");
     const [banner, setBanner] = useState(false);
+
     useEffect(() => {
         if (typeof localStorage == "undefined") return;
         const banner = localStorage.getItem("$Award_close_banner");
@@ -69,6 +72,33 @@ const Header = ({ $, NavItems }) => {
         if (theme === "rose") setHue("hue-rotate-[330deg]");
         if (theme === "amber") setHue("");
     }, []);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCountdown((prevCountdown) => {
+                if (prevCountdown === 1) {
+                    clearInterval(timer);
+                    setIsDisabled(false);
+                    return 0;
+                }
+                return prevCountdown - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
+
+    const ButtonContent = ({ children }) => {
+        if (isDisabled) {
+            return (
+                <>
+                    <span className="animate-spin inline-block mr-2">&#9696;</span>
+                    {countdown}s
+                </>
+            );
+        }
+        return children;
+    };
     
     return (
         <>
@@ -77,9 +107,7 @@ const Header = ({ $, NavItems }) => {
                     <div className="flex items-center space-x-6">
                         <div className="flex items-center space-x-3">
                             <img src="/img/logo2.png" 
-                                className={`
-                                    rounded-full 
-                                `}
+                                className={`rounded-full`}
                                 width="48" height="48"
                             />
                             <p className="invisible md:visible text-xl text-white font-semibold">
@@ -105,22 +133,13 @@ const Header = ({ $, NavItems }) => {
                                     </a>
                                 </li>
                             ))}
-
                         </ul>
                     </div>
                     <div className="flex items-center space-x-2 relative">
                         <button
                             onClick={() => setOpen(!open)}
-                            className="
-                                bg-transparent
-                                py-2
-                                px-3
-                                text-white
-                                rounded-md
-                                text-center
-                                lg:hidden
-                                hover:bg-amber-400 hover:bg-opacity-20
-                        ">
+                            className="bg-transparent py-2 px-3 text-white rounded-md text-center lg:hidden hover:bg-amber-400 hover:bg-opacity-20"
+                        >
                             <i className={`fa ${open ? 'fa-times' : 'fa-bars'} text-lg`} />
                         </button>
                         <Menu as="div" className="relative text-left">
@@ -167,10 +186,13 @@ const Header = ({ $, NavItems }) => {
                             </Transition>
                         </Menu>
                         <Link href="https://discord.com/oauth2/authorize?client_id=1201613667561639947&permissions=139455884671&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2Fc24GWCtxQc&integration_type=0&scope=email+guilds+identify+bot+guilds.join+openid">
-                            <a className="w-auto flex items-center justify-center shadow-lg gap-x-2 shadow-amber-600/20 rounded-xl py-2.5 font-medium px-7 bg-gradient-to-tl from-amber-500 to-amber-700 text-white  hover:opacity-80 transition duration-200">
-                               Botu Ekle
+                            <a 
+                                className={`w-auto flex items-center justify-center shadow-lg gap-x-2 shadow-amber-600/20 rounded-xl py-2.5 font-medium px-7 bg-gradient-to-tl from-amber-500 to-amber-700 text-white hover:opacity-80 transition duration-200 ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                onClick={(e) => isDisabled && e.preventDefault()}
+                            >
+                                <ButtonContent>Botu Ekle</ButtonContent>
                             </a>
-               </Link>
+                        </Link>
                     </div>
                 </div>
             </header>
