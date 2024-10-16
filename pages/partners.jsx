@@ -12,17 +12,17 @@ export default function Partners() {
             </div>
 
             <div className="lg:max-w-screen-lg mt-10 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex flex-col justify-center text-white rounded">
+                <div className="flex flex-col justify-center text-white">
                     <a href="https://discord.gg/UN2wF7mBVq">
-                        <div className="flex-1 gap-x-4 flex items-center bg-gradient-to-b from-neutral-900/80 to-neutral-900/20 p-3 rounded-full">
-                            <img className="rounded-full h-32 w-32 flex-shrink-0" src="/img/slayer-uptime.png" alt="Slayer Uptime" />
-                            <div className="flex-1 min-w-0"> {/* Added min-w-0 to allow text truncation */}
-                                <h1 className="leading-none text-3xl font-bold text-white truncate">Slayer Uptime</h1>        
-                                <div className="mt-1">
-                                    <p className="font-normal text-sm line-clamp-3"> {/* Added line-clamp-3 for text truncation */}
-                                        Slayer Uptime, Glitch vb projelerinizi sürekli izleyerek aktif kalmasını sağlayan çok işlevli ve kolay kullanımlı bir Discord botudur.
-                                    </p>
-                                </div>     
+                        <div className="flex flex-col bg-gradient-to-b from-neutral-900/80 to-neutral-900/20 p-6 rounded-lg">
+                            <div className="flex items-center gap-4 mb-4">
+                                <img className="rounded-full h-32 w-32 flex-shrink-0" src="/img/slayer-uptime.png" alt="Slayer Uptime" />
+                                <h1 className="text-3xl font-bold text-white">Slayer Uptime</h1>
+                            </div>
+                            <div className="mt-2">
+                                <p className="font-normal">
+                                    Slayer Uptime, Glitch vb projelerinizi sürekli izleyerek aktif kalmasını sağlayan çok işlevli ve kolay kullanımlı bir Discord botudur.
+                                </p>
                             </div>
                         </div>
                     </a>
@@ -31,4 +31,4 @@ export default function Partners() {
             <div className="py-10"></div>
         </>
     );
-              }
+}
