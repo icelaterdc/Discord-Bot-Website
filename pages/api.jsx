@@ -1,19 +1,25 @@
-import Link from 'next/link';
+import React from 'react';
 
 export default function ApiPage() {
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center">
-      <h1 className="text-white text-4xl mb-10">ENDPOINTS</h1>
-      <div className="bg-black grid grid-cols-1 gap-4 w-full max-w-lg">
-        <div className="bg-white bg-opacity-60 p-5 rounded-lg text-center">
-          <h2 className="text-xl font-bold text-white mb-2">Sohbet API</h2>
-          <p className="text-gray-300 mb-4">
-            Sohbet için AI tabanlı bir API sağlar.
-          </p>
-          <Link href="https://slayerbot.vercel.app/api/sohbet/dosc">
-            <a className="bg-blue-500 text-white py-2 px-4 rounded">Link</a>
-          </Link>
-        </div>
+    <div className="flex justify-center items-center h-screen bg-black">
+      {/* Kare kutucuk */}
+      <div
+        className="w-96 h-48 bg-gray-700 bg-opacity-60 text-white flex flex-col justify-center items-center rounded-md"
+      >
+        {/* Title */}
+        <h2 className="text-2xl font-bold mb-2">SlayerBot API</h2>
+        {/* Description */}
+        <p className="mb-4 text-center">
+          Bu API, SlayerBot'un sohbet fonksiyonlarına erişim sağlar.
+        </p>
+        {/* Button */}
+        <a
+          href="https://slayerbot.vercel.app/api/sohbet/dosc"
+          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        >
+          Link
+        </a>
       </div>
     </div>
   );
