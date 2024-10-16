@@ -18,7 +18,7 @@ export default function Partners() {
             <div className="flex flex-col justify-center text-white rounded">
             <a href="https://discord.gg/UN2wF7mBVq">
                         <div className="flex-1 gap-x-4 flex items-center bg-gradient-to-b from-neutral-900/80 to-neutral-900/20 p-3 rounded-full">
-                            <img className="rounded-full h-32 w-32" src="https://media.discordapp.net/attachments/1295796909629247530/1295796947717984388/InShot_20241015_201215740-Photoroom.png?ex=670ff473&is=670ea2f3&hm=83338f2794bb54fe575905c013e899793f18a2e74c0baa3fdaadccbb50165e13&" />
+                            <img className="rounded-full h-32 w-32" src="/img/slayer-uptime.png" />
                             <div>
                                 <h1 className="leading-none text-3xl font-bold text-white">Slayer Uptime</h1>        
                                 <div className="flex items-center mt-1">
