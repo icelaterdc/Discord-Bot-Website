@@ -95,8 +95,8 @@ export default function AwardApp({ Component, pageProps }) {
     {
       link: false,
       name: user ? "Çıkış Yap" : "Giriş Yap",
-      icon: user ? user.avatar : "fa fa-sign-in-alt",
-      activeIcon: user ? user.avatar : "fa fa-sign-in-alt",
+      icon: user ? "fa fa-user" : "fa fa-sign-in-alt",
+      activeIcon: user ? "fa fa-user" : "fa fa-sign-in-alt",
       onClick: user ? handleLogout : handleLogin,
     },
   ];
