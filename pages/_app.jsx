@@ -21,15 +21,6 @@ export default function AwardApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    // URL parametrelerinden kullanıcı bilgilerini al ve state'e kaydet
-    const urlParams = new URLSearchParams(window.location.search);
-    const userParam = urlParams.get('user');
-    if (userParam) {
-      const user = JSON.parse(userParam);
-      setUser(user);
-      localStorage.setItem('user', userParam);
-    }
-
     // Giriş yapılmışsa kullanıcı bilgilerini localStorage'dan al
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -39,9 +30,14 @@ export default function AwardApp({ Component, pageProps }) {
 
   // Çıkış yap fonksiyonu
   const handleLogout = async () => {
-    await fetch('/api/logout');
-    setUser(null); // Çıkış yapınca kullanıcı bilgisini sıfırla
-    router.push('/');
+    try {
+      await fetch('/api/logout'); // API'den çıkış isteği
+      localStorage.removeItem('user'); // localStorage'daki kullanıcı verisini sil
+      setUser(null); // kullanıcıyı null yap
+      router.push('/'); // anasayfaya yönlendir
+    } catch (error) {
+      console.error("Çıkış yaparken hata oluştu:", error);
+    }
   };
 
   const NavItems = [
@@ -112,12 +108,8 @@ export default function AwardApp({ Component, pageProps }) {
     {
       link: true,
       name: user ? "Çıkış Yap" : "Giriş Yap",
-      icon: user
-        ? `<img src="${user.avatar}" alt="avatar" className="w-6 h-6 rounded-full" />`
-        : "fal fa-sign-in",
-      activeIcon: user
-        ? `<img src="${user.avatar}" alt="avatar" className="w-6 h-6 rounded-full" />`
-        : "fa fa-sign-in",
+      icon: user ? "fa fa-sign-out-alt" : "fal fa-sign-in", // Çıkış yap ikonu
+      activeIcon: user ? "fa fa-sign-out-alt" : "fa fa-sign-in",
       href: user ? "#logout" : "/api/login",
       onClick: user ? handleLogout : null, // Giriş yapıldıysa çıkış fonksiyonu
     },
