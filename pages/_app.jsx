@@ -1,3 +1,4 @@
+// pages/_app.jsx
 import "../public/css/global.css";
 import "../public/css/tippy.css";
 import "../public/css/customColors.css";
@@ -20,7 +21,6 @@ export default function AwardApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // URL parametrelerinden kullanıcı bilgilerini al ve state'e kaydet
     const urlParams = new URLSearchParams(window.location.search);
     const userParam = urlParams.get('user');
     if (userParam) {
@@ -29,12 +29,17 @@ export default function AwardApp({ Component, pageProps }) {
       localStorage.setItem('user', userParam);
     }
 
-    // Giriş yapılmışsa kullanıcı bilgilerini localStorage'dan al
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    Router.push("/");
+  };
 
   const NavItems = [
     {
@@ -102,9 +107,20 @@ export default function AwardApp({ Component, pageProps }) {
       activeIcon: user
         ? `<img src="${user.avatar}" alt="avatar" className="w-6 h-6 rounded-full" />`
         : "fa fa-sign-in",
-      href: user ? "/api/logout" : "/api/login",
+      href: user ? "#" : "/api/login",
+      onClick: user ? handleLogout : null,
     },
   ];
+
+  if (user) {
+    NavItems.push({
+      link: true,
+      name: "Yönetim Paneli",
+      icon: "fa fa-cog",
+      activeIcon: "fa fa-cog",
+      href: "/dashboard",
+    });
+  }
 
   return (
     <ThemeProvider defaultTheme="violet">
