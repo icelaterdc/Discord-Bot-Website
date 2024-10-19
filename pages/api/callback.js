@@ -4,7 +4,7 @@ export default async function callback(req, res) {
   const { code } = req.query;
   const client_id = '1201613667561639947';
   const client_secret = '0whqBiwUMt_qrXhXgYogOGTAp_jprQnn';
-  const redirect_uri = 'https://slayerbot.vervel.app/api/callback';
+  const redirect_uri = 'https://slayerbot.vercel.app/api/callback';
   const tokenURL = 'https://discord.com/api/oauth2/token';
   const userURL = 'https://discord.com/api/users/@me';
 
