@@ -20,6 +20,15 @@ export default function AwardApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    // URL parametrelerinden kullanıcı bilgilerini al ve state'e kaydet
+    const urlParams = new URLSearchParams(window.location.search);
+    const userParam = urlParams.get('user');
+    if (userParam) {
+      const user = JSON.parse(userParam);
+      setUser(user);
+      localStorage.setItem('user', userParam);
+    }
+
     // Giriş yapılmışsa kullanıcı bilgilerini localStorage'dan al
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
