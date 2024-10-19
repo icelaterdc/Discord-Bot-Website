@@ -18,53 +18,23 @@ Router.onRouteChangeError = () => NProgress.done();
 
 export default function AwardApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
+    // URL parametrelerinden kullanıcı bilgilerini al ve state'e kaydet
+    const urlParams = new URLSearchParams(window.location.search);
+    const userParam = urlParams.get('user');
+    if (userParam) {
+      const user = JSON.parse(userParam);
+      setUser(user);
+      localStorage.setItem('user', userParam);
+    }
+
     // Giriş yapılmışsa kullanıcı bilgilerini localStorage'dan al
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-
-    // Her route değişiminde kullanıcıyı kontrol et
-    const handleRouteChange = () => {
-      const updatedUser = localStorage.getItem("user");
-      if (!updatedUser) {
-        setUser(null);
-      }
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router]);
-
-  // Çıkış yap fonksiyonu
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('/api/logout', {
-        method: 'POST',
-        credentials: 'include', // Kullanıcı oturumunu temizlemek için
-      });
-
-      if (response.ok) {
-        localStorage.removeItem('user'); // localStorage'daki kullanıcı verisini sil
-        setUser(null); // kullanıcıyı null yap
-        router.push('/'); // anasayfaya yönlendir
-      } else {
-        console.error('Çıkış yapma başarısız oldu.');
-      }
-    } catch (error) {
-      console.error("Çıkış yaparken hata oluştu:", error);
-    }
-  };
-
-  // Giriş yapma fonksiyonu
-  const handleLogin = async () => {
-    router.push('/api/login');
-  };
+  }, []);
 
   const NavItems = [
     {
@@ -123,23 +93,18 @@ export default function AwardApp({ Component, pageProps }) {
       activeIcon: "fa fa-file-contract",
       href: "/license",
     },
-    // Eğer kullanıcı giriş yaptıysa, "Yönetim Paneli" butonunu göster
-    user && {
-      link: true,
-      name: "Yönetim Paneli",
-      icon: "fa fa-cogs",
-      activeIcon: "fa fa-cogs",
-      href: "/admin-panel",
-    },
     {
       link: true,
       name: user ? "Çıkış Yap" : "Giriş Yap",
-      icon: user ? "fa fa-sign-out-alt" : "fal fa-sign-in", // Giriş/çıkış yap iconu
-      activeIcon: user ? "fa fa-sign-out-alt" : "fa fa-sign-in",
-      href: "#", // href kaldırıldı, giriş çıkışı onClick ile yapıyoruz
-      onClick: user ? handleLogout : handleLogin, // Giriş yapıldıysa çıkış, yapılmadıysa giriş yap
+      icon: user
+        ? `<img src="${user.avatar}" alt="avatar" className="w-6 h-6 rounded-full" />`
+        : "fal fa-sign-in",
+      activeIcon: user
+        ? `<img src="${user.avatar}" alt="avatar" className="w-6 h-6 rounded-full" />`
+        : "fa fa-sign-in",
+      href: user ? "/api/logout" : "/api/login",
     },
-  ].filter(Boolean); // undefined öğeleri filtrele
+  ];
 
   return (
     <ThemeProvider defaultTheme="violet">
