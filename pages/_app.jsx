@@ -5,9 +5,10 @@ import "tailwindcss/tailwind.css";
 import NProgress from "nprogress";
 import Router, { useRouter } from "next/router";
 import Head from "next/head";
-
+import { useEffect, useState } from 'react';
 import Header from "../components/Static/Header.jsx";
 import Footer from "../components/Static/Footer.jsx";
+import DiscordLogin from "../components/DiscordLogin.jsx";
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -16,6 +17,23 @@ Router.onRouteChangeError = () => NProgress.done();
 import { ThemeProvider } from 'next-themes'
 
 export default function AwardApp({ Component, pageProps }) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('discord_user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogin = () => {
+    window.location.href = `https://discord.com/api/oauth2/authorize?client_id=1201613667561639947&redirect_uri=${encodeURIComponent('https://your-domain.com/api/auth/discord')}&response_type=code&scope=identify%20email%20guilds%20guilds.join`;
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('discord_user');
+    setUser(null);
+  };
  
   const NavItems = [
     {
@@ -74,6 +92,13 @@ export default function AwardApp({ Component, pageProps }) {
       activeIcon: "fa fa-file-contract",
       href: "/license",
     },
+    {
+      link: false,
+      name: user ? "Çıkış Yap" : "Giriş Yap",
+      icon: user ? user.avatar : "fa fa-sign-in-alt",
+      activeIcon: user ? user.avatar : "fa fa-sign-in-alt",
+      onClick: user ? handleLogout : handleLogin,
+    },
   ];
 
   return (
@@ -103,4 +128,4 @@ export default function AwardApp({ Component, pageProps }) {
     </div>
     </ThemeProvider>
   );
-}
+       }
