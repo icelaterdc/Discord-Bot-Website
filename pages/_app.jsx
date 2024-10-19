@@ -18,6 +18,7 @@ import { ThemeProvider } from 'next-themes'
 
 export default function AwardApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('discord_user');
@@ -27,12 +28,19 @@ export default function AwardApp({ Component, pageProps }) {
   }, []);
 
   const handleLogin = () => {
-    window.location.href = `https://discord.com/api/oauth2/authorize?client_id=1201613667561639947&redirect_uri=${encodeURIComponent('https://your-domain.com/api/auth/discord')}&response_type=code&scope=identify%20email%20guilds%20guilds.join`;
+    const clientId = '1201613667561639947';
+    const redirectUri = encodeURIComponent('https://your-domain.com/api/auth/discord');
+    const scope = 'identify email guilds guilds.join';
+    
+    const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
+    
+    window.location.href = authUrl;
   };
 
   const handleLogout = () => {
     localStorage.removeItem('discord_user');
     setUser(null);
+    router.push('/');
   };
  
   const NavItems = [
