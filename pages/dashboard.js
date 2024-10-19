@@ -28,7 +28,7 @@ export default function Dashboard() {
         },
       });
 
-      const botGuildsResponse = await axios.get('/api/bot-guilds'); // Bu endpoint'i oluşturmanız gerekecek
+      const botGuildsResponse = await axios.get('/api/bot-guilds');
 
       const userGuilds = userGuildsResponse.data.filter(guild => (guild.permissions & 0x8) === 0x8);
       const botGuilds = new Set(botGuildsResponse.data.map(guild => guild.id));
@@ -41,7 +41,7 @@ export default function Dashboard() {
   };
 
   if (!user) {
-    return <div>Loading...</div>;
+    return <div>Yükleniyor...</div>;
   }
 
   return (
@@ -78,4 +78,4 @@ export default function Dashboard() {
       )}
     </div>
   );
-      }
+          }
