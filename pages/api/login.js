@@ -1,6 +1,6 @@
 export default async function login(req, res) {
   const client_id = '1201613667561639947'; // Discord uygulama client ID
-  const redirect_uri = 'https://slayerbot.vervel.app/api/callback'; // Yönlendirme URI
+  const redirect_uri = 'https://slayerbot.vercel.app/api/callback'; // Yönlendirme URI
   const scope = 'identify email guilds guilds.join openid'; // Genişletilmiş yetkiler
   const response_type = 'code';
 
