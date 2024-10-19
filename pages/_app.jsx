@@ -5,10 +5,10 @@ import "tailwindcss/tailwind.css";
 import NProgress from "nprogress";
 import Router, { useRouter } from "next/router";
 import Head from "next/head";
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import Header from "../components/Static/Header.jsx";
 import Footer from "../components/Static/Footer.jsx";
-import DiscordLogin from "../components/DiscordLogin.jsx";
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -18,9 +18,9 @@ import { ThemeProvider } from 'next-themes'
 
 export default function AwardApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
+    // Check if user is logged in
     const storedUser = localStorage.getItem('discord_user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -28,19 +28,12 @@ export default function AwardApp({ Component, pageProps }) {
   }, []);
 
   const handleLogin = () => {
-    const clientId = '1201613667561639947';
-    const redirectUri = encodeURIComponent('https://your-domain.com/api/auth/discord');
-    const scope = 'identify email guilds guilds.join';
-    
-    const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
-    
-    window.location.href = authUrl;
+    window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1201613667561639947&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback&response_type=code&scope=identify%20email%20guilds%20guilds.join';
   };
 
   const handleLogout = () => {
     localStorage.removeItem('discord_user');
     setUser(null);
-    router.push('/');
   };
  
   const NavItems = [
@@ -103,8 +96,8 @@ export default function AwardApp({ Component, pageProps }) {
     {
       link: false,
       name: user ? "Çıkış Yap" : "Giriş Yap",
-      icon: user ? "fa fa-user" : "fa fa-sign-in-alt",
-      activeIcon: user ? "fa fa-user" : "fa fa-sign-in-alt",
+      icon: user ? user.avatar : "fa fa-sign-in",
+      activeIcon: user ? user.avatar : "fa fa-sign-in",
       onClick: user ? handleLogout : handleLogin,
     },
   ];
@@ -124,7 +117,7 @@ export default function AwardApp({ Component, pageProps }) {
       <main className="transition-all duration-200 z-10 absolute inset-0 px-5 h-screen max-w-7xl w-full mx-auto">
         <Header NavItems={NavItems} />
         <div className="block px-5 md:px-0">
-          <Component {...pageProps} />
+          <Component {...pageProps} user={user} />
         </div>
         <Footer />
       </main>
@@ -136,4 +129,4 @@ export default function AwardApp({ Component, pageProps }) {
     </div>
     </ThemeProvider>
   );
-       }
+}
