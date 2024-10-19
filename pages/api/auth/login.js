@@ -4,7 +4,7 @@ import { stringify } from 'querystring';
 export default function handler(req, res) {
   const params = stringify({
     client_id: '1201613667561639947',
-    redirect_uri: 'http://localhost:3000/api/auth/callback',
+    redirect_uri: 'http://slayerbot.vervel.app/api/auth/callback',
     response_type: 'code',
     scope: 'identify email guilds guilds.join',
   });
