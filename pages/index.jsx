@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Index() {
   const [countdown, setCountdown] = useState(7);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [user, setUser] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -18,8 +21,30 @@ export default function Index() {
       });
     }, 1000);
 
+    const { user: userData, error } = router.query;
+
+    if (userData) {
+      const parsedUser = JSON.parse(userData);
+      setUser(parsedUser);
+      localStorage.setItem('discord_user', JSON.stringify(parsedUser));
+      router.replace('/', undefined, { shallow: true });
+    } else if (error) {
+      console.error('Authentication error:', error);
+      router.replace('/', undefined, { shallow: true });
+    } else {
+      const storedUser = localStorage.getItem('discord_user');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    }
+
     return () => clearInterval(timer);
-  }, []);
+  }, [router]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('discord_user');
+    setUser(null);
+  };
 
   const ButtonContent = ({ children }) => {
     if (isDisabled) {
@@ -46,6 +71,25 @@ export default function Index() {
           Moderasyon, Eğlence, Ekonomi, Yapay Zeka, Müzik, Botlist, Log, Sunucu Koruma ve Hatta Daha Sayılmayacak Bir Çok Özelliği Barındıran Slayer Bot ile Sunucunuzun Tüm İhtiyaçlarını Tek Başına Büyük Ölçüde Giderebilirsiniz.
         </p>
         <div className="animateHeader mt-10 flex flex-wrap items-center justify-center gap-x-4">
+          {user ? (
+            <div className="flex items-center gap-x-2">
+              <img src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`} alt="User Avatar" className="w-10 h-10 rounded-full" />
+              <p className="text-white">Hoş geldin, {user.username}!</p>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 transition duration-200"
+              >
+                Çıkış Yap
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => router.push('/api/auth/login')}
+              className="px-6 py-4 text-white bg-amber-500 rounded-xl hover:bg-amber-600 transition duration-200"
+            >
+              Discord ile Giriş Yap
+            </button>
+          )}
           <Link href={"https://discord.com/oauth2/authorize?client_id=1201613667561639947&permissions=139455884671&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2Fc24GWCtxQc&integration_type=0&scope=email+guilds+identify+bot+guilds.join+openid"}>
             <a
               className={`flex items-center px-6 justify-center gap-x-2 shadow-lg shadow-amber-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -122,4 +166,4 @@ export default function Index() {
       </div>
     </>
   )
-  }
+		}
