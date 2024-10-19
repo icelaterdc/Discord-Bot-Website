@@ -31,10 +31,18 @@ export default function AwardApp({ Component, pageProps }) {
   // Çıkış yap fonksiyonu
   const handleLogout = async () => {
     try {
-      await fetch('/api/logout'); // API'den çıkış isteği
-      localStorage.removeItem('user'); // localStorage'daki kullanıcı verisini sil
-      setUser(null); // kullanıcıyı null yap
-      router.push('/'); // anasayfaya yönlendir
+      const response = await fetch('/api/logout', {
+        method: 'POST',
+        credentials: 'include', // Kullanıcı oturumunu temizlemek için
+      });
+
+      if (response.ok) {
+        localStorage.removeItem('user'); // localStorage'daki kullanıcı verisini sil
+        setUser(null); // kullanıcıyı null yap
+        router.push('/'); // anasayfaya yönlendir
+      } else {
+        console.error('Çıkış yapma başarısız oldu.');
+      }
     } catch (error) {
       console.error("Çıkış yaparken hata oluştu:", error);
     }
@@ -110,8 +118,8 @@ export default function AwardApp({ Component, pageProps }) {
       name: user ? "Çıkış Yap" : "Giriş Yap",
       icon: user ? "fa fa-sign-out-alt" : "fal fa-sign-in", // Çıkış yap ikonu
       activeIcon: user ? "fa fa-sign-out-alt" : "fa fa-sign-in",
-      href: user ? "#logout" : "/api/login",
-      onClick: user ? handleLogout : null, // Giriş yapıldıysa çıkış fonksiyonu
+      href: "#", // href kaldırıldı, çıkışı onClick ile yapacağız
+      onClick: user ? handleLogout : () => router.push("/api/login"), // Giriş yapıldıysa çıkış fonksiyonu
     },
   ].filter(Boolean); // undefined öğeleri filtrele
 
