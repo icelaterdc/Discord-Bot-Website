@@ -26,7 +26,20 @@ export default function AwardApp({ Component, pageProps }) {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  }, []);
+
+    // Her route değişiminde kullanıcıyı kontrol et
+    const handleRouteChange = () => {
+      const updatedUser = localStorage.getItem("user");
+      if (!updatedUser) {
+        setUser(null);
+      }
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router]);
 
   // Çıkış yap fonksiyonu
   const handleLogout = async () => {
@@ -46,6 +59,11 @@ export default function AwardApp({ Component, pageProps }) {
     } catch (error) {
       console.error("Çıkış yaparken hata oluştu:", error);
     }
+  };
+
+  // Giriş yapma fonksiyonu
+  const handleLogin = async () => {
+    router.push('/api/login');
   };
 
   const NavItems = [
@@ -116,10 +134,10 @@ export default function AwardApp({ Component, pageProps }) {
     {
       link: true,
       name: user ? "Çıkış Yap" : "Giriş Yap",
-      icon: user ? "fa fa-sign-out-alt" : "fal fa-sign-in", // Çıkış yap ikonu
+      icon: user ? "fa fa-sign-out-alt" : "fal fa-sign-in", // Giriş/çıkış yap iconu
       activeIcon: user ? "fa fa-sign-out-alt" : "fa fa-sign-in",
-      href: "#", // href kaldırıldı, çıkışı onClick ile yapacağız
-      onClick: user ? handleLogout : () => router.push("/api/login"), // Giriş yapıldıysa çıkış fonksiyonu
+      href: "#", // href kaldırıldı, giriş çıkışı onClick ile yapıyoruz
+      onClick: user ? handleLogout : handleLogin, // Giriş yapıldıysa çıkış, yapılmadıysa giriş yap
     },
   ].filter(Boolean); // undefined öğeleri filtrele
 
