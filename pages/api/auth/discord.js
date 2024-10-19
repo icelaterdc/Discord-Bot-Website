@@ -1,11 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
 const CLIENT_ID = '1201613667561639947';
 const CLIENT_SECRET = '0whqBiwUMt_qrXhXgYogOGTAp_jprQnn';
-const REDIRECT_URI = 'https://your-domain.com/api/auth/discord';
+const REDIRECT_URI = 'https://slayerbot.vercel.app/api/auth/discord';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req, res) {
   if (req.method === 'GET') {
     const { code } = req.query;
 
@@ -15,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           new URLSearchParams({
             client_id: CLIENT_ID,
             client_secret: CLIENT_SECRET,
-            code: code as string,
+            code: code,
             grant_type: 'authorization_code',
             redirect_uri: REDIRECT_URI,
             scope: 'identify email guilds guilds.join',
@@ -49,4 +48,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.setHeader('Allow', ['GET']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-            }
+}
