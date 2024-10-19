@@ -1,45 +1,47 @@
-// _app.jsx (ekleme yapılıyor)
-
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import "../public/css/global.css";
 import "../public/css/tippy.css";
 import "../public/css/customColors.css";
 import "tailwindcss/tailwind.css";
 import NProgress from "nprogress";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import Head from "next/head";
+
 import Header from "../components/Static/Header.jsx";
 import Footer from "../components/Static/Footer.jsx";
+
 import { ThemeProvider } from "next-themes";
+import { useState, useEffect } from "react";
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
 export default function AwardApp({ Component, pageProps }) {
-  const [user, setUser] = useState(null); // Kullanıcı verisi
+  const [user, setUser] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
-    // Kullanıcı giriş yapmış mı kontrol et
-    const fetchUser = async () => {
-      const res = await fetch("/api/getUser");
-      if (res.ok) {
-        const userData = await res.json();
-        setUser(userData); // Kullanıcı verisini ayarla
-      } else {
-        setUser(null); // Kullanıcı yoksa null yap
-      }
-    };
+    // URL parametrelerinden kullanıcı bilgilerini al ve state'e kaydet
+    const urlParams = new URLSearchParams(window.location.search);
+    const userParam = urlParams.get('user');
+    if (userParam) {
+      const user = JSON.parse(userParam);
+      setUser(user);
+      localStorage.setItem('user', userParam);
+    }
 
-    fetchUser();
+    // Giriş yapılmışsa kullanıcı bilgilerini localStorage'dan al
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
   }, []);
 
+  // Çıkış yap fonksiyonu
   const handleLogout = async () => {
-    await fetch("/api/logout");
-    setUser(null); // Çıkış yaptıktan sonra kullanıcıyı null yap
-    router.push("/"); // Anasayfaya yönlendir
+    await fetch('/api/logout');
+    setUser(null); // Çıkış yapınca kullanıcı bilgisini sıfırla
+    router.push('/');
   };
 
   const NavItems = [
@@ -50,29 +52,76 @@ export default function AwardApp({ Component, pageProps }) {
       activeIcon: "fa fa-home",
       href: "/",
     },
-    // Diğer menü öğeleri burada...
     {
-      link: !user, // Giriş yapılmamışsa göster
-      name: "Giriş Yap",
-      icon: "fa fa-sign-in",
-      activeIcon: "fa fa-sign-in",
-      href: "/api/login",
+      link: true,
+      name: "Komutlar",
+      icon: "fa fa-list-alt",
+      activeIcon: "fa fa-list-alt",
+      href: "/commands",
     },
     {
-      link: user, // Giriş yapılmışsa göster
-      name: "Çıkış Yap",
-      icon: "fa fa-sign-out",
-      activeIcon: "fa fa-sign-out",
-      onClick: handleLogout,
+      link: true,
+      name: "Destek Sunucusu",
+      icon: "fab fa-discord",
+      activeIcon: "fab fa-discord",
+      href: "https://discord.gg/MfYJqanN8M",
     },
     {
-      link: user, // Giriş yapılmışsa göster
+      link: true,
+      name: "Botu Ekle",
+      icon: "fal fa-robot",
+      activeIcon: "fab fa-robot",
+      href: "https://discord.com/oauth2/authorize?client_id=1201613667561639947&permissions=139455884671&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2Fc24GWCtxQc&integration_type=0&scope=email+guilds+identify+bot+guilds.join+openid",
+    },
+    {
+      link: true,
+      name: "Oy Ver",
+      icon: "fa fa-plus",
+      activeIcon: "fa fa-plus",
+      href: "https://top.gg/bot/1201613667561639947/vote",
+    },
+    {
+      link: true,
+      name: "Partner ve Sponsorlar",
+      icon: "fal fa-handshake",
+      activeIcon: "fa fa-handshake",
+      href: "/partners",
+    },
+    {
+      link: true,
+      name: "API Dokümasyonları",
+      icon: "fa fa-book",
+      activeIcon: "fa fa-book",
+      href: "/api-docs",
+    },
+    {
+      link: true,
+      name: "Lisanslar",
+      icon: "fa fa-file-contract",
+      activeIcon: "fa fa-file-contract",
+      href: "/license",
+    },
+    // Eğer kullanıcı giriş yaptıysa, "Yönetim Paneli" butonunu göster
+    user && {
+      link: true,
       name: "Yönetim Paneli",
-      icon: "fa fa-cog",
-      activeIcon: "fa fa-cog",
-      href: "/admin-panel", // Yönetim paneline yönlendirme
+      icon: "fa fa-cogs",
+      activeIcon: "fa fa-cogs",
+      href: "/admin-panel",
     },
-  ];
+    {
+      link: true,
+      name: user ? "Çıkış Yap" : "Giriş Yap",
+      icon: user
+        ? `<img src="${user.avatar}" alt="avatar" className="w-6 h-6 rounded-full" />`
+        : "fal fa-sign-in",
+      activeIcon: user
+        ? `<img src="${user.avatar}" alt="avatar" className="w-6 h-6 rounded-full" />`
+        : "fa fa-sign-in",
+      href: user ? "#logout" : "/api/login",
+      onClick: user ? handleLogout : null, // Giriş yapıldıysa çıkış fonksiyonu
+    },
+  ].filter(Boolean); // undefined öğeleri filtrele
 
   return (
     <ThemeProvider defaultTheme="violet">
@@ -91,6 +140,11 @@ export default function AwardApp({ Component, pageProps }) {
           </div>
           <Footer />
         </main>
+        <div>
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" />
+          <script src="/js/main.js?i=2" />
+        </div>
       </div>
     </ThemeProvider>
   );
