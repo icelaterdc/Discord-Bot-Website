@@ -4,7 +4,7 @@ import axios from 'axios';
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
-      const botToken = 'MTIwMTYxMzY2NzU2MTYzOTk0Nw.GeJ7lr.BkGxlyx_xnV-pWcLlcW0COBOme3HUDQgfIn2Pc'; // Bot token'ı burada açık bir şekilde verilmiştir.
+      const botToken = process.env.DISCORD_BOT_TOKEN; // Bot token'ı burada açık bir şekilde verilmiştir.
       const response = await axios.get('https://discord.com/api/users/@me/guilds', {
         headers: {
           Authorization: `Bot ${botToken}`,
