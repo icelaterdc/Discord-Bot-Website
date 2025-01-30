@@ -1,69 +1,52 @@
 import { createCanvas, loadImage } from "canvas";
 
 export default async function handler(req, res) {
+  const { muzikKart } = req.query;
+
+  if (!muzikKart || muzikKart.length < 5) {
+    return res.status(400).json({ error: "Eksik parametreler" });
+  }
+
+  const [muzikAdi, sanatciAdi, sureBaslangic, sureBitis, resimUrl] = muzikKart;
+
   try {
-    const { muzik_adi, sanatci_adi, sure_baslangic, sure_bitis, resim_url } = req.query;
-
-    if (!muzik_adi || !sanatci_adi || !sure_baslangic || !sure_bitis || !resim_url) {
-      return res.status(400).json({ error: "Eksik parametreler!" });
-    }
-
-    // Zamanı saniyeye çeviren yardımcı fonksiyon
-    const timeToSeconds = (time) => {
-      const [minutes, seconds] = time.split(":").map(Number);
-      return minutes * 60 + seconds;
-    };
-
-    const startTime = timeToSeconds(sure_baslangic);
-    const endTime = timeToSeconds(sure_bitis);
-    const duration = endTime - startTime;
-    const progressRatio = startTime / endTime; // Ne kadar ilerlediğini hesapla
-
-    // Kart boyutları
-    const width = 600;
+    const width = 800;
     const height = 200;
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext("2d");
 
-    // Arkaplan için müzik görselini yükle
-    const image = await loadImage(resim_url);
-    ctx.drawImage(image, 0, 0, width, height);
-
-    // Hafif blur efekti ekleyerek yazıları okunabilir hale getir
+    // Arka planı müzik resmine göre belirle
+    const img = await loadImage(resimUrl);
+    ctx.drawImage(img, 0, 0, width, height);
     ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
     ctx.fillRect(0, 0, width, height);
 
-    // Yazılar için font ve renk ayarları
-    ctx.fillStyle = "#ffffff";
+    // Başlık
+    ctx.fillStyle = "white";
     ctx.font = "bold 24px Arial";
-    ctx.fillText(muzik_adi, 20, 40);
+    ctx.fillText(muzikAdi, 20, 40);
 
+    // Sanatçı
     ctx.font = "18px Arial";
-    ctx.fillText(sanatci_adi, 20, 70);
+    ctx.fillText(sanatciAdi, 20, 70);
 
-    // Müzik ilerleme çubuğu
-    const progressWidth = width - 40;
-    const progressHeight = 10;
-    const progressY = 120;
+    // Süre çubuğu
+    ctx.fillStyle = "gray";
+    ctx.fillRect(20, 100, width - 40, 10);
+    ctx.fillStyle = "white";
+    const progress =
+      (parseFloat(sureBaslangic) / parseFloat(sureBitis)) * (width - 40);
+    ctx.fillRect(20, 100, progress, 10);
 
-    ctx.fillStyle = "#999999";
-    ctx.fillRect(20, progressY, progressWidth, progressHeight);
-
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(20, progressY, progressWidth * progressRatio, progressHeight);
-
+    // Süreler
+    ctx.fillStyle = "white";
     ctx.font = "14px Arial";
-    ctx.fillText(sure_baslangic, 20, progressY + 25);
-    ctx.fillText(sure_bitis, width - 60, progressY + 25);
-
-    // Albüm kapağını sağ tarafa ekle
-    const logoSize = 80;
-    ctx.drawImage(image, width - logoSize - 20, 20, logoSize, logoSize);
+    ctx.fillText(sureBaslangic, 20, 130);
+    ctx.fillText(sureBitis, width - 60, 130);
 
     res.setHeader("Content-Type", "image/png");
     res.send(canvas.toBuffer());
   } catch (error) {
-    res.status(500).json({ error: "Sunucu hatası!" });
+    res.status(500).json({ error: "Görsel oluşturulamadı" });
   }
-  }
-      
+}
