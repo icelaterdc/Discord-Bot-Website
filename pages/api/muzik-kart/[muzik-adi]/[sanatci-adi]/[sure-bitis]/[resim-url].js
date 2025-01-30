@@ -2,19 +2,30 @@ import { createCanvas, loadImage } from "canvas";
 
 export default async function handler(req, res) {
   try {
-    const { muzik_adi, sanatci_adi, sure_bitis, resim_url } = req.query;
+    const { muzik_adi, sanatci_adi, sure_baslangic, sure_bitis, resim_url } = req.query;
 
-    if (!muzik_adi || !sanatci_adi || !sure_bitis || !resim_url) {
+    if (!muzik_adi || !sanatci_adi || !sure_baslangic || !sure_bitis || !resim_url) {
       return res.status(400).json({ error: "Eksik parametreler!" });
     }
 
-    // Kart boyutları (Küçük banner formatı)
+    // Zamanı saniyeye çeviren yardımcı fonksiyon
+    const timeToSeconds = (time) => {
+      const [minutes, seconds] = time.split(":").map(Number);
+      return minutes * 60 + seconds;
+    };
+
+    const startTime = timeToSeconds(sure_baslangic);
+    const endTime = timeToSeconds(sure_bitis);
+    const duration = endTime - startTime;
+    const progressRatio = startTime / endTime; // Ne kadar ilerlediğini hesapla
+
+    // Kart boyutları
     const width = 600;
     const height = 200;
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext("2d");
 
-    // Arkaplan için müziğin resmini yükle
+    // Arkaplan için müzik görselini yükle
     const image = await loadImage(resim_url);
     ctx.drawImage(image, 0, 0, width, height);
 
@@ -39,13 +50,13 @@ export default async function handler(req, res) {
     ctx.fillRect(20, progressY, progressWidth, progressHeight);
 
     ctx.fillStyle = "#ffffff";
-    ctx.fillRect(20, progressY, progressWidth * 0.4, progressHeight); // %40 ilerleme simüle edildi
+    ctx.fillRect(20, progressY, progressWidth * progressRatio, progressHeight);
 
     ctx.font = "14px Arial";
-    ctx.fillText("00:00", 20, progressY + 25);
+    ctx.fillText(sure_baslangic, 20, progressY + 25);
     ctx.fillText(sure_bitis, width - 60, progressY + 25);
 
-    // Resmi yan tarafa ekle
+    // Albüm kapağını sağ tarafa ekle
     const logoSize = 80;
     ctx.drawImage(image, width - logoSize - 20, 20, logoSize, logoSize);
 
@@ -54,5 +65,4 @@ export default async function handler(req, res) {
   } catch (error) {
     res.status(500).json({ error: "Sunucu hatası!" });
   }
-                 }
-                          
+}
